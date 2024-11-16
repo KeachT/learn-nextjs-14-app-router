@@ -39,6 +39,7 @@ export async function createInvoice(formData: FormData) {
     VALUES (${customerId}, ${amountInCents}, ${status}, ${date})
     `;
   } catch (error) {
+    console.error("error: ", error);
     // エラーになった場合はエラーメッセージを返して終了する
     return {
       message: "Database Error: Failed to Create Invoice.",
@@ -68,7 +69,8 @@ export async function updateInvoice(id: string, formData: FormData) {
     SET customer_id = ${customerId}, amount = ${amountInCents}, status = ${status}
     WHERE id = ${id}
     `;
-  } catch {
+  } catch (error) {
+    console.error("error: ", error);
     return { message: "Database Error: Failed to Update Invoice." };
   }
 
@@ -82,7 +84,8 @@ export async function deleteInvoice(id: string) {
     DELETE FROM invoices WHERE id = ${id}
     `;
     revalidatePath("/dashboard/invoices");
-  } catch {
+  } catch (error) {
+    console.error("error: ", error);
     return { message: "Database Error: Failed to Delete Invoice." };
   }
 }

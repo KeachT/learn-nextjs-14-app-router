@@ -219,5 +219,5 @@ export async function fetchFilteredCustomers(query: string) {
   }
 }
 
-const invoiceCountPromise = sql`SELECT COUNT(*) FROM invoices`;
-const customerCountPromise = sql`SELECT COUNT(*) FROM customers`;
+// const invoiceCountPromise = sql`SELECT COUNT(*) FROM invoices`;
+// const customerCountPromise = sql`SELECT COUNT(*) FROM customers`;
